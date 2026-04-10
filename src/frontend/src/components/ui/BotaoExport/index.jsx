@@ -8,7 +8,7 @@ function BotaoExportarExcel() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3000/export/excel", {
+      const response = await fetch("https://axolove-deploy-1004.onrender.com/export/excel", {
         method: "GET",
       });
 
