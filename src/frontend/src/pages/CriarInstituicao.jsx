@@ -162,7 +162,7 @@ export default function CriarInstituicao() {
       Swal.update({ html: "Salvando no backend..." });
 
       //Salva instituição no backend.
-      await fetch("http://localhost:3000/instituicoes", {
+      await fetch("https://axolove-deploy-1004.onrender.com/instituicoes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

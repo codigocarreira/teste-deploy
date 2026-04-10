@@ -23,7 +23,7 @@ export default function SuperAdminPanel() {
         : `institutionId=${user.institutionId}`;
 
       const res = await fetch(
-        `http://localhost:3000/solicitacoes/notificacoes?${query}`
+        `https://axolove-deploy-1004.onrender.com/solicitacoes/notificacoes?${query}`
       );
 
       const data = await res.json();
@@ -57,7 +57,7 @@ export default function SuperAdminPanel() {
         )
       ).wait();
 
-      await fetch("http://localhost:3000/solicitacoes/aprovar", {
+      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/aprovar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ solicitacaoId: req.id }),
@@ -71,7 +71,7 @@ export default function SuperAdminPanel() {
   };
 
   const handleReject = async (id) => {
-    await fetch("http://localhost:3000/solicitacoes/rejeitar", {
+    await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/rejeitar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ solicitacaoId: id }),
