@@ -1,0 +1,23 @@
+:root {
+  --blanco-fundo: #fffef3;
+  --fonte: "Poppins", sans-serif;
+  --azul-oscuro: #142562;
+  --azul-claro: #46b8fc;
+  --blanco: #ffffff;
+}
+
+.container_section {
+  display: flex;
+  align-items: center;
+  height: 90%;
+  background-color: var(--azul-oscuro);
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+h3 {
+  color: var(--blanco-fundo);
+}

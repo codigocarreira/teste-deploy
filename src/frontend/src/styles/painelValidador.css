@@ -1,0 +1,459 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --bg-page: #f7f8fc;
+  --bg-card: #ffffff;
+  --bg-soft: #f4f7fc;
+  --bg-soft-2: #eef4ff;
+  --text-main: #142562;
+  --text-body: #5f6b85;
+  --border: #dbe3f0;
+  --border-soft: #e9eef7;
+  --primary: #142562;
+  --primary-mid: #2153cb;
+  --white: #ffffff;
+  --shadow: 0 18px 42px rgba(20, 37, 98, 0.12);
+
+  --pending-bg: #fff7e8;
+  --pending-text: #b54708;
+
+  --approved-bg: #ecfdf3;
+  --approved-text: #027a48;
+
+  --rejected-bg: #fff1f1;
+  --rejected-text: #b42318;
+
+  --type-axolote-bg: #eef4ff;
+  --type-axolote-text: #1d4ed8;
+
+  --type-ambiente-bg: #eefcf6;
+  --type-ambiente-text: #027a48;
+
+  --font: "Poppins", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg-page);
+}
+
+.validator-page {
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.validator-content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+.validator-wrapper {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.validator-sidebar {
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    var(--primary-mid) 100%
+  );
+  color: var(--white);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: sticky;
+  top: 24px;
+}
+
+.validator-sidebar-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 720px;
+}
+
+.validator-back-button {
+  width: fit-content;
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-family: var(--font);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.validator-badge {
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.validator-sidebar-copy h1 {
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.validator-sidebar-copy p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.validator-sidebar-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.validator-sidebar-card strong {
+  font-size: 14px;
+}
+
+.validator-sidebar-card span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.validator-main {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.validator-main-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.validator-top-card {
+  border: 1px solid var(--border);
+  background: #fbfcff;
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.validator-top-card h2 {
+  margin: 0 0 8px;
+  color: var(--text-main);
+  font-size: 20px;
+}
+
+.validator-top-card p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.validator-toolbar {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 14px;
+}
+
+.validator-search,
+.validator-filter {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #d6deea;
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: white;
+  font: inherit;
+  outline: none;
+}
+
+.validator-search:focus,
+.validator-filter:focus {
+  border-color: var(--primary-mid);
+  box-shadow: 0 0 0 4px rgba(33, 83, 203, 0.08);
+}
+
+.validation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.validation-card {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: white;
+}
+
+.validation-card.expanded {
+  box-shadow: 0 12px 28px rgba(20, 37, 98, 0.08);
+}
+
+.validation-card-header {
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 1fr 56px;
+  gap: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.validation-card-main h3 {
+  margin: 0 0 8px;
+  color: var(--text-main);
+  font-size: 18px;
+}
+
+.validation-card-main p {
+  margin: 0 0 14px;
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.validation-card-topline {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.type-badge,
+.status-badge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.type-badge.axolote {
+  background: var(--type-axolote-bg);
+  color: var(--type-axolote-text);
+}
+
+.type-badge.ambiente {
+  background: var(--type-ambiente-bg);
+  color: var(--type-ambiente-text);
+}
+
+.status-badge.pendente {
+  background: var(--pending-bg);
+  color: var(--pending-text);
+}
+
+.status-badge.validado {
+  background: var(--approved-bg);
+  color: var(--approved-text);
+}
+
+.status-badge.recusado {
+  background: var(--rejected-bg);
+  color: var(--rejected-text);
+}
+
+.validation-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.validation-card-meta span {
+  font-size: 12px;
+  color: #667089;
+}
+
+.validation-card-expand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.validation-card-expand span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-soft-2);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.validation-card-body {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--border-soft);
+  background: #fcfdff;
+}
+
+.detail-section {
+  margin-top: 18px;
+  border: 1px solid #e5ebf4;
+  border-radius: 18px;
+  padding: 16px;
+  background: white;
+}
+
+.detail-section h4 {
+  margin: 0 0 12px;
+  color: var(--text-main);
+  font-size: 15px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.detail-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.detail-item span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.detail-item strong {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.validation-card-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ghost-btn,
+.primary-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-family: var(--font);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ghost-btn {
+  background: var(--bg-soft-2);
+  color: var(--text-main);
+}
+
+.ghost-btn.danger {
+  background: var(--rejected-bg);
+  color: var(--rejected-text);
+}
+
+.primary-btn {
+  background: var(--text-main);
+  color: white;
+}
+
+.ghost-btn:disabled,
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.viewer-mode-box {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f8fbff;
+  border: 1px solid var(--border-soft);
+  color: var(--text-body);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.empty-state {
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px dashed var(--border);
+  background: white;
+  color: var(--text-body);
+  text-align: center;
+}
+
+@media (max-width: 1120px) {
+  .validator-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .validator-sidebar {
+    position: static;
+  }
+
+  .validator-sidebar-inner {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .validator-content {
+    padding: 16px 12px 28px;
+  }
+
+  .validator-main-inner,
+  .validator-sidebar-inner {
+    padding: 16px;
+  }
+
+  .validator-toolbar,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .validation-card-header {
+    grid-template-columns: 1fr;
+  }
+
+  .validation-card-actions {
+    flex-direction: column;
+  }
+
+  .ghost-btn,
+  .primary-btn,
+  .validator-back-button {
+    width: 100%;
+  }
+}

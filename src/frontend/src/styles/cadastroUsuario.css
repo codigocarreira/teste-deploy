@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --blanco-fundo: #fffef3;
+  --fonte: "Poppins", sans-serif;
+  --azul-oscuro: #142562;
+  --azul-claro: #46b8fc;
+  --blanco: #ffffff;
+  --borda-suave: rgba(20, 37, 98, 0.12);
+  --sombra-card: 0 12px 28px rgba(20, 37, 98, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#form_seccion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte);
+  margin: 1.5rem 0 0;
+}
+
+.form_container {
+  border: 2px solid var(--azul-oscuro);
+  padding: 0;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  border-radius: 1rem;
+  min-height: 500px;
+  overflow: hidden;
+  font-family: var(--fonte);
+  background: var(--blanco-fundo);
+  box-shadow: var(--sombra-card);
+}
+
+#color {
+  width: 50%;
+  background-color: var(--azul-oscuro);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 28px;
+  text-align: center;
+  color: var(--blanco-fundo);
+  margin: 0 0 1rem;
+}
+
+#imagen {
+  width: min(70%, 280px);
+  max-width: 100%;
+  height: auto;
+}
+
+#form_cadastro_usuario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  gap: 1rem;
+  padding: 2.5rem;
+  background-color: var(--blanco-fundo);
+}
+
+#form_cadastro_usuario p {
+  margin: 0 0 0.5rem;
+  color: var(--azul-oscuro);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+label {
+  color: var(--azul-oscuro);
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+  font-family: var(--fonte);
+  border-radius: 10px;
+}
+
+input,
+select {
+  border: 1px solid var(--borda-suave);
+  background: #fff;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(70, 184, 252, 0.18);
+  border-color: var(--azul-claro);
+}
+
+button {
+  background-color: var(--azul-oscuro);
+  color: var(--blanco-fundo);
+  margin: 1rem 0 0 0;
+  width: 100%;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.admin-container {
+  display: flex;
+  width: 100%;
+  background-color: var(--azul-oscuro);
+  padding: 40px;
+  box-sizing: border-box;
+  gap: 40px;
+  font-family: var(--fonte);
+  border-radius: 1rem;
+  min-height: 420px;
+}
+
+.admin-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.admin-left-text {
+  width: 100%;
+  text-align: left;
+}
+
+.admin-left-text h1 {
+  color: var(--blanco);
+  font-size: 28px;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.admin-left-text p {
+  color: var(--blanco);
+  margin: 0 0 24px;
+  text-align: left;
+}
+
+.admin-image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+.admin-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  min-width: 0;
+}
+
+.search-section,
+.list-section {
+  width: 100%;
+}
+
+.search-section label,
+.list-section label {
+  display: block;
+  font-size: 14px;
+  color: var(--blanco);
+  margin-bottom: 6px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 12px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+  padding: 0;
+  background: transparent;
+}
+
+.search-icon {
+  color: #64748b;
+}
+
+.user-list {
+  height: 180px;
+  border: 2px solid #5eead4;
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.primary-button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--blanco);
+  color: var(--azul-oscuro);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .admin-container {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+    min-height: auto;
+  }
+
+  .admin-left {
+    order: 1;
+  }
+
+  .admin-right {
+    order: 2;
+    width: 100%;
+    align-items: center;
+  }
+
+  .admin-left-text {
+    text-align: center;
+  }
+
+  .admin-left-text h1,
+  .admin-left-text p {
+    text-align: center;
+  }
+
+  .search-box,
+  .user-list,
+  .primary-button {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .search-section,
+  .list-section {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .form_container {
+    flex-direction: column;
+  }
+
+  #color,
+  #form_cadastro_usuario {
+    width: 100%;
+  }
+
+  #color {
+    padding: 2rem 1.5rem;
+  }
+
+  #form_cadastro_usuario {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-container {
+    padding: 20px 16px;
+    gap: 24px;
+  }
+
+  .admin-left-text h1 {
+    font-size: 20px;
+  }
+
+  .admin-left-text p {
+    font-size: 14px;
+  }
+
+  .admin-image {
+    max-width: 180px;
+  }
+
+  .user-list {
+    height: 150px;
+  }
+
+  .primary-button {
+    padding: 14px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #imagen {
+    width: min(55%, 220px);
+  }
+
+  #form_cadastro_usuario {
+    width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-container {
+    padding: 16px 12px;
+    border-radius: 0.85rem;
+  }
+
+  .admin-left-text h1 {
+    font-size: 18px;
+  }
+
+  .admin-left-text p {
+    font-size: 13px;
+  }
+
+  .admin-image {
+    max-width: 150px;
+  }
+
+  .search-box {
+    padding: 10px;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+
+  .form_container {
+    border-radius: 0.85rem;
+  }
+
+  #color {
+    padding: 1.5rem 1rem;
+  }
+
+  #form_cadastro_usuario {
+    padding: 1.25rem;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,199 @@
+:root {
+  --banner-text: #ffffff;
+  --banner-title: #ffffff;
+  --banner-shadow: 0 14px 40px rgba(12, 22, 58, 0.22);
+
+  --banner-blue: linear-gradient(
+    135deg,
+    rgba(20, 37, 98, 0.95) 0%,
+    rgba(33, 83, 203, 0.92) 38%,
+    rgba(70, 184, 252, 0.82) 100%
+  );
+
+  --banner-pink: linear-gradient(
+    135deg,
+    rgba(77, 20, 86, 0.95) 0%,
+    rgba(233, 45, 150, 0.9) 45%,
+    rgba(249, 148, 15, 0.78) 100%
+  );
+
+  --banner-green: linear-gradient(
+    135deg,
+    rgba(12, 51, 72, 0.95) 0%,
+    rgba(29, 128, 128, 0.9) 42%,
+    rgba(66, 206, 181, 0.8) 100%
+  );
+
+  --banner-orange: linear-gradient(
+    135deg,
+    rgba(88, 39, 9, 0.96) 0%,
+    rgba(249, 148, 15, 0.92) 50%,
+    rgba(233, 45, 150, 0.75) 100%
+  );
+}
+
+.banner {
+  position: relative;
+  width: calc(100% - 32px);
+  margin: 16px;
+
+  min-height: 380px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  /* isolation: isolate; */
+  border-radius: 24px;
+  z-index: 0;
+}
+.banner-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.banner-blue .banner-overlay {
+  background: var(--banner-blue);
+}
+
+.banner-pink .banner-overlay {
+  background: var(--banner-pink);
+}
+
+.banner-green .banner-overlay {
+  background: var(--banner-green);
+}
+
+.banner-orange .banner-overlay {
+  background: var(--banner-orange);
+}
+
+.banner-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 42px 6%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  align-items: center;
+  gap: 32px;
+}
+
+.banner-content {
+  max-width: 680px;
+}
+
+.banner-title {
+  margin: 0;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  color: var(--banner-title);
+  text-align: left;
+}
+
+.banner-subtitle {
+  margin-top: 16px;
+  max-width: 560px;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.banner-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.banner-side-image {
+  max-width: 100%;
+  width: min(100%, 460px);
+  max-height: 320px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 18px 40px rgba(12, 22, 58, 0.28));
+}
+
+/* tablet */
+@media (max-width: 992px) {
+  .banner {
+    min-height: 340px;
+  }
+
+  .banner-container {
+    grid-template-columns: 1fr 0.85fr;
+    padding: 34px 5%;
+    gap: 24px;
+  }
+
+  .banner-side-image {
+    max-height: 270px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .banner {
+    min-height: 420px;
+    top: -4px;
+  }
+
+  .banner-container {
+    grid-template-columns: 1fr;
+    padding: 30px 20px 26px;
+    gap: 20px;
+    text-align: left;
+  }
+
+  .banner-content {
+    max-width: 100%;
+  }
+
+  .banner-subtitle {
+    max-width: 100%;
+  }
+
+  .banner-side {
+    justify-content: center;
+  }
+
+  .banner-side-image {
+    width: min(100%, 320px);
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    min-height: 390px;
+  }
+
+  .banner-container {
+    padding: 26px 16px 22px;
+  }
+
+  .banner-subtitle {
+    margin-top: 12px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .banner-side-image {
+    width: min(100%, 260px);
+    max-height: 180px;
+  }
+}
