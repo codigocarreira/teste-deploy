@@ -1,32 +1,20 @@
 import { useState, useEffect } from "react";
 import { useWallet } from "../../context/WalletContext";
 import { ethers } from "ethers";
-import { USER_ACCESS, USER_ACCESS_ABI } from "../config/contracts";
-import Header from "../components/layout/Header";
-import "../styles/superAdmin.css";
 import Swal from "sweetalert2";
+
+import { USER_ACCESS, USER_ACCESS_ABI } from "../config/contracts";
+import PageLayout from "../components/layout/PageLayout";
 
 export default function SuperAdminPanel() {
   const { walletAddress, user, connectWallet } = useWallet();
-  const roles = user?.roles || {};
 
-  const [institutions, setInstitutions] = useState([]);
+  const roles = user?.roles || {};
   const [adminRequests, setAdminRequests] = useState([]);
 
   useEffect(() => {
-    fetchInstitutions();
     fetchAdminRequests();
   }, []);
-
-  const fetchInstitutions = async () => {
-    try {
-      const res = await fetch("https://axolove-deploy-1004.onrender.com/instituicoes");
-      const data = await res.json();
-      setInstitutions(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const fetchAdminRequests = async () => {
     try {
@@ -35,10 +23,10 @@ export default function SuperAdminPanel() {
         : `institutionId=${user.institutionId}`;
 
       const res = await fetch(
-        `https://axolove-deploy-1004.onrender.com/solicitacoes/notificacoes?${query}`,
+        `http://localhost:3000/solicitacoes/notificacoes?${query}`
       );
+
       const data = await res.json();
-      console.log("===== DEBUG NOTIFICAÇÕES FRONTEND =====", data);
       setAdminRequests(data);
     } catch (err) {
       console.error(err);
@@ -59,49 +47,48 @@ export default function SuperAdminPanel() {
       const contract = new ethers.Contract(
         USER_ACCESS,
         USER_ACCESS_ABI,
-        signer,
+        signer
       );
-      const institutionId = req.blockchain_institution_id;
 
       await (
-        await contract.grantAdmin(institutionId, req.carteira_metamask)
+        await contract.grantAdmin(
+          req.blockchain_institution_id,
+          req.carteira_metamask
+        )
       ).wait();
 
-      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/aprovar", {
+      await fetch("http://localhost:3000/solicitacoes/aprovar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ solicitacaoId: req.id }),
       });
 
-      Swal.fire("Éxito", "Admin aprobado!", "success");
+      Swal.fire("Éxito", "Administrador aprobado!", "success");
       fetchAdminRequests();
     } catch (err) {
-      console.error(err);
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: err.reason || err.message,
-      });
+      Swal.fire("Error", err.reason || err.message, "error");
     }
   };
 
   const handleReject = async (id) => {
-    try {
-      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/rejeitar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ solicitacaoId: id }),
-      });
-      fetchAdminRequests();
-    } catch (err) {
-      console.error(err);
-    }
+    await fetch("http://localhost:3000/solicitacoes/rejeitar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ solicitacaoId: id }),
+    });
+
+    fetchAdminRequests();
   };
 
   return (
-    <div className="page">
+    <PageLayout
+      bannerBackgroundImage="/images/bg-banner.png"
+      bannerTitle="Panel de Super Administración"
+      bannerSubtitle="Gestión global de instituciones y administradores"
+      bannerVariant="blue"
+    >
       {!walletAddress && (
-        <div className="center-box">
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <button className="btn-primary" onClick={connectWallet}>
             Conectar MetaMask
           </button>
@@ -109,42 +96,51 @@ export default function SuperAdminPanel() {
       )}
 
       {walletAddress && roles.superAdmin && (
-        <div className="page-content">
-          <Header />
-
-          <div className="card">
-            <h2 className="title">Solicitudes de Admin</h2>
-
-            {adminRequests.length === 0 && <p>Ninguna solicitud pendiente</p>}
-
-            {adminRequests.map((req) => (
-              <div key={req.id} className="request-card">
-                <p>
-                  <strong>{req.nome_usuario}</strong>
-                </p>
-                <p>{req.carteira_metamask}</p>
-                <p>{req.ens}</p>
-
-                <div className="actions">
-                  <button
-                    className="btn-primary"
-                    onClick={() => handleApprove(req)}
-                  >
-                    Aprobar
-                  </button>
-
-                  <button
-                    className="btn-danger"
-                    onClick={() => handleReject(req.id)}
-                  >
-                    Rechazar
-                  </button>
-                </div>
-              </div>
-            ))}
+        <>
+          {/* HEADER PADRÃO IGUAL ADMIN */}
+          <div className="home-section-header">
+            <h2 className="home-section-title">
+              Solicitudes de administradores
+            </h2>
+            <p className="home-section-subtitle">
+              Revisión global de accesos pendientes
+            </p>
           </div>
-        </div>
+
+          {/* LISTA PADRÃO DE CARDS */}
+          <div className="list-cards-axolote">
+            {adminRequests.length === 0 ? (
+              <p style={{ textAlign: "center", color: "#94a3b8" }}>
+                No hay solicitudes pendientes
+              </p>
+            ) : (
+              adminRequests.map((req) => (
+                <div className="card" key={req.id}>
+                  <strong>{req.nome_usuario}</strong>
+                  <p>{req.ens}</p>
+                  <code>{req.carteira_metamask}</code>
+
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <button
+                      className="btn-primary"
+                      onClick={() => handleApprove(req)}
+                    >
+                      Aprobar
+                    </button>
+
+                    <button
+                      className="btn-danger"
+                      onClick={() => handleReject(req.id)}
+                    >
+                      Rechazar
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </>
       )}
-    </div>
+    </PageLayout>
   );
 }
