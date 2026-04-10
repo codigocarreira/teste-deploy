@@ -7,7 +7,7 @@ export function useAquarios() {
   useEffect(() => {
     const carregarAquarios = async () => {
       try {
-        const res = await fetch("http://localhost:3000/aquarios");
+        const res = await fetch("https://axolove-deploy-1004.onrender.com/aquarios");
         if (!res.ok) throw new Error("Erro ao carregar aquários");
         const data = await res.json();
         setAquarios(data);

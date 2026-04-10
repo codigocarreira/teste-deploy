@@ -1,7 +1,7 @@
 import { grantRole } from "./accessService";
 
 export async function addUser({ name, wallet, role, institutionId }) {
-  const res = await fetch("http://localhost:3000/usuarios", {
+  const res = await fetch("https://axolove-deploy-1004.onrender.com/usuarios", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

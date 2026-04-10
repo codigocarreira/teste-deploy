@@ -8,7 +8,7 @@ export function useAxolotes() {
   useEffect(() => {
     const carregarAxolotes = async () => {
       try {
-        const res = await fetch("http://localhost:3000/axolotes");
+        const res = await fetch("https://axolove-deploy-1004.onrender.com/axolotes");
         if (!res.ok) throw new Error("Erro ao carregar axolotes");
         const data = await res.json();
         setAxolotes(data);

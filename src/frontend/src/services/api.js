@@ -1,5 +1,5 @@
 export async function getAxolote(id){
-    const response = await fetch(`http://localhost:3000/registros/axolote/${id}/historico`);
+    const response = await fetch(`https://axolove-deploy-1004.onrender.com/registros/axolote/${id}/historico`);
 
     if(!response.ok){
         throw new Error ("Erro ao buscar histórico");

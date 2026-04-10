@@ -272,7 +272,7 @@ export default function RegistroAquario() {
         naturalEcosystem: formData.naturalEcosystem,
       };
 
-      const response = await fetch("http://localhost:3000/registros/aquario", {
+      const response = await fetch("https://axolove-deploy-1004.onrender.com/registros/aquario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -290,7 +290,7 @@ export default function RegistroAquario() {
 
       //Buscando o onchainEntityId do aquario ja cadastrado.
       const aquarioRes = await fetch(
-        `http://localhost:3000/aquarios/${formData.tank}`,
+        `https://axolove-deploy-1004.onrender.com/aquarios/${formData.tank}`,
       );
       if (!aquarioRes.ok) throw new Error("Aquario não encontrado no banco");
       const aquarioData = await aquarioRes.json();
@@ -337,7 +337,7 @@ export default function RegistroAquario() {
 
       //Salvando IDs on-chain e tx_hash no banco de dados.
       await fetch(
-        `http://localhost:3000/registros/aquario/${result.registro.id}/onchain`,
+        `https://axolove-deploy-1004.onrender.com/registros/aquario/${result.registro.id}/onchain`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

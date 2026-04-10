@@ -27,13 +27,13 @@ export default function AxoloteDetails() {
   useEffect(() => {
     async function carregar() {
       try {
-        const res = await fetch(`http://localhost:3000/axolotes/${specimenId}`);
+        const res = await fetch(`https://axolove-deploy-1004.onrender.com/axolotes/${specimenId}`);
         if (!res.ok) throw new Error("Axolote nao encontrado");
         const data = await res.json();
         setSpecimen(data);
 
         if (data.fk_aquario_id) {
-          const resAq = await fetch("http://localhost:3000/aquarios");
+          const resAq = await fetch("https://axolove-deploy-1004.onrender.com/aquarios");
           if (resAq.ok) {
             const aquarios = await resAq.json();
             const aq = aquarios.find((a) => a.id === data.fk_aquario_id);
@@ -42,7 +42,7 @@ export default function AxoloteDetails() {
         }
 
         const responseHistory = await fetch(
-          `http://localhost:3000/registros/axolote/${specimenId}/pesoVsTamanho`,
+          `https://axolove-deploy-1004.onrender.com/registros/axolote/${specimenId}/pesoVsTamanho`,
         );
         if (responseHistory.ok) {
           const hist = await responseHistory.json();
@@ -56,7 +56,7 @@ export default function AxoloteDetails() {
         }
 
         const resResumo = await fetch(
-          `http://localhost:3000/registros/axolote/${specimenId}/resumo`,
+          `https://axolove-deploy-1004.onrender.com/registros/axolote/${specimenId}/resumo`,
         );
 
         if (resResumo.ok) {

@@ -113,7 +113,7 @@ function AxoloteForm() {
       formData.append("operador_wallet", walletAddress);
       formData.append("fk_instituicao_id", String(user.institutionId));
 
-      const response = await fetch("http://localhost:3000/axolotes", {
+      const response = await fetch("https://axolove-deploy-1004.onrender.com/axolotes", {
         method: "POST",
         body: formData,
       });
@@ -164,7 +164,7 @@ function AxoloteForm() {
 
       //Salvando dados on-chain no banco.
       await fetch(
-        `http://localhost:3000/axolotes/${result.axolote.id}/onchain`,
+        `https://axolove-deploy-1004.onrender.com/axolotes/${result.axolote.id}/onchain`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

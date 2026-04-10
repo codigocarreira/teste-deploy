@@ -25,14 +25,14 @@ function AquarioDetails() {
   useEffect(() => {
     async function carregar() {
       try {
-        const res = await fetch("http://localhost:3000/aquarios");
+        const res = await fetch("https://axolove-deploy-1004.onrender.com/aquarios");
         if (!res.ok) throw new Error("Erro ao buscar aquarios");
         const data = await res.json();
         const found = data.find((a) => String(a.id) === String(tankId));
         setTank(found || null);
 
         const resHist = await fetch(
-          `http://localhost:3000/registros/aquario/${tankId}/temperaturaEph`,
+          `https://axolove-deploy-1004.onrender.com/registros/aquario/${tankId}/temperaturaEph`,
         );
 
         if (resHist.ok) {

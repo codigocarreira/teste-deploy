@@ -18,7 +18,7 @@ export default function CadastroUsuario() {
       if (!user?.institutionId) return;
 
       const res = await fetch(
-        `http://localhost:3000/solicitacoes?institutionId=${user.institutionId}&status=PENDING&roles=OPERATOR,VALIDATOR`,
+        `https://axolove-deploy-1004.onrender.com/solicitacoes?institutionId=${user.institutionId}&status=PENDING&roles=OPERATOR,VALIDATOR`,
       );
 
       const data = await res.json();
@@ -65,7 +65,7 @@ export default function CadastroUsuario() {
 
       await tx.wait();
 
-      await fetch("http://localhost:3000/solicitacoes/aprovar", {
+      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/aprovar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ solicitacaoId: sol.id }),
@@ -86,7 +86,7 @@ export default function CadastroUsuario() {
 
   const rejeitar = async (id) => {
     try {
-      await fetch("http://localhost:3000/solicitacoes/rejeitar", {
+      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/rejeitar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ solicitacaoId: id }),

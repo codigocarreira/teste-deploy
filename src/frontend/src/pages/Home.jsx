@@ -23,7 +23,7 @@ function Home() {
         axolotes.map(async (ax) => {
           try {
             const res = await fetch(
-              `http://localhost:3000/registros/axolote/${ax.id}/resumo`,
+              `https://axolove-deploy-1004.onrender.com/registros/axolote/${ax.id}/resumo`,
             );
 
             if (res.ok) {

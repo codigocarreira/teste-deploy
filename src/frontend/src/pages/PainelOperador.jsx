@@ -29,8 +29,8 @@ function PainelOperador() {
     async function carregarRegistros() {
       try {
         const [resAxolote, resAquario] = await Promise.all([
-          fetch("http://localhost:3000/registros/axolote"),
-          fetch("http://localhost:3000/registros/aquario"),
+          fetch("https://axolove-deploy-1004.onrender.com/registros/axolote"),
+          fetch("https://axolove-deploy-1004.onrender.com/registros/aquario"),
         ]);
 
         const axoloteData = resAxolote.ok ? await resAxolote.json() : [];

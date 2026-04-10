@@ -294,7 +294,7 @@ export default function RegistroAxolote() {
           : [],
       };
 
-      const response = await fetch("http://localhost:3000/registros/axolote", {
+      const response = await fetch("https://axolove-deploy-1004.onrender.com/registros/axolote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -311,7 +311,7 @@ export default function RegistroAxolote() {
 
       //Buscando o onchainEntityId do axolote ja cadastrado.
       const axoloteRes = await fetch(
-        `http://localhost:3000/axolotes/${formData.specimen}`,
+        `https://axolove-deploy-1004.onrender.com/axolotes/${formData.specimen}`,
       );
       if (!axoloteRes.ok)
         throw new Error("Ajolote no encontrado en la base de datos");
@@ -359,7 +359,7 @@ export default function RegistroAxolote() {
 
       //Salvando IDs on-chain e tx_hash no banco de dados.
       await fetch(
-        `http://localhost:3000/registros/axolote/${result.registro.id}/onchain`,
+        `https://axolove-deploy-1004.onrender.com/registros/axolote/${result.registro.id}/onchain`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

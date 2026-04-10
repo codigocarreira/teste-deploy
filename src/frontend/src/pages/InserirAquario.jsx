@@ -117,7 +117,7 @@ function AquarioForm({ atualizarLista = () => {} }) {
         console.log("[FORMDATA]", key, value);
       }
 
-      const response = await fetch("http://localhost:3000/aquarios", {
+      const response = await fetch("https://axolove-deploy-1004.onrender.com/aquarios", {
         method: "POST",
         body: formData,
       });
@@ -159,7 +159,7 @@ function AquarioForm({ atualizarLista = () => {} }) {
       const onchainEntityId = Number(event.args.axoloteId);
 
       await fetch(
-        `http://localhost:3000/aquarios/${result.aquario.id}/onchain`,
+        `https://axolove-deploy-1004.onrender.com/aquarios/${result.aquario.id}/onchain`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

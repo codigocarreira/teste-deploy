@@ -90,8 +90,8 @@ export default function PainelValidador({ userRole = "auditor" }) {
     async function carregarRegistros() {
       try {
         const [resAxolote, resAquario] = await Promise.all([
-          fetch("http://localhost:3000/registros/axolote"),
-          fetch("http://localhost:3000/registros/aquario"),
+          fetch("https://axolove-deploy-1004.onrender.com/registros/axolote"),
+          fetch("https://axolove-deploy-1004.onrender.com/registros/aquario"),
         ]);
 
         const axoloteData = resAxolote.ok ? await resAxolote.json() : [];
@@ -349,7 +349,7 @@ export default function PainelValidador({ userRole = "auditor" }) {
 
       try {
         const ipfsRes = await fetch(
-          "http://localhost:3000/registros/auditoria",
+          "https://axolove-deploy-1004.onrender.com/registros/auditoria",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -426,7 +426,7 @@ export default function PainelValidador({ userRole = "auditor" }) {
         const tipoRota = record.type === "axolote" ? "axolote" : "aquario";
 
         const syncRes = await fetch(
-          `http://localhost:3000/registros/${tipoRota}/${record.dbId}/status`,
+          `https://axolove-deploy-1004.onrender.com/registros/${tipoRota}/${record.dbId}/status`,
           {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -512,7 +512,7 @@ export default function PainelValidador({ userRole = "auditor" }) {
         timestamp: new Date().toISOString(),
       };
 
-      const ipfsRes = await fetch("http://localhost:3000/registros/auditoria", {
+      const ipfsRes = await fetch("https://axolove-deploy-1004.onrender.com/registros/auditoria", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -539,7 +539,7 @@ export default function PainelValidador({ userRole = "auditor" }) {
       const tipoRota = record.type === "axolote" ? "axolote" : "aquario";
 
       await fetch(
-        `http://localhost:3000/registros/${tipoRota}/${record.dbId}/status`,
+        `https://axolove-deploy-1004.onrender.com/registros/${tipoRota}/${record.dbId}/status`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

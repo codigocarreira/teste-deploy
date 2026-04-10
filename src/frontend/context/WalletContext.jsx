@@ -54,7 +54,7 @@ export function WalletProvider({ children }) {
         console.log("ENS enviado:", institutionENS);
         console.log("ID da instituição na blockchain:", user.blockchainInstitutionId);
 
-        const res = await fetch("http://localhost:3000/instituicoes/sync", {
+        const res = await fetch("https://axolove-deploy-1004.onrender.com/instituicoes/sync", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

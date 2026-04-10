@@ -20,7 +20,7 @@ export default function SuperAdminPanel() {
 
   const fetchInstitutions = async () => {
     try {
-      const res = await fetch("http://localhost:3000/instituicoes");
+      const res = await fetch("https://axolove-deploy-1004.onrender.com/instituicoes");
       const data = await res.json();
       setInstitutions(data);
     } catch (err) {
@@ -35,7 +35,7 @@ export default function SuperAdminPanel() {
         : `institutionId=${user.institutionId}`;
 
       const res = await fetch(
-        `http://localhost:3000/solicitacoes/notificacoes?${query}`,
+        `https://axolove-deploy-1004.onrender.com/solicitacoes/notificacoes?${query}`,
       );
       const data = await res.json();
       console.log("===== DEBUG NOTIFICAÇÕES FRONTEND =====", data);
@@ -67,7 +67,7 @@ export default function SuperAdminPanel() {
         await contract.grantAdmin(institutionId, req.carteira_metamask)
       ).wait();
 
-      await fetch("http://localhost:3000/solicitacoes/aprovar", {
+      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/aprovar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ solicitacaoId: req.id }),
@@ -87,7 +87,7 @@ export default function SuperAdminPanel() {
 
   const handleReject = async (id) => {
     try {
-      await fetch("http://localhost:3000/solicitacoes/rejeitar", {
+      await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes/rejeitar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ solicitacaoId: id }),

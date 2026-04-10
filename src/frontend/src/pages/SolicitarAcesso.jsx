@@ -34,7 +34,7 @@ export default function SolicitarAcesso() {
     const parentENS = getParentENS(user.ens);
 
     try {
-      const res = await fetch("http://localhost:3000/solicitacoes", {
+      const res = await fetch("https://axolove-deploy-1004.onrender.com/solicitacoes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

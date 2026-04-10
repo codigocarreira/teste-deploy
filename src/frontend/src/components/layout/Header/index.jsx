@@ -109,11 +109,11 @@ export default function Header() {
       let url = "";
 
       if (roles.superAdmin) {
-        url = `http://localhost:3000/solicitacoes/notificacoes?superAdminRole=true`;
+        url = `https://axolove-deploy-1004.onrender.com/solicitacoes/notificacoes?superAdminRole=true`;
       } else if (roles.admin) {
-        url = `http://localhost:3000/solicitacoes/notificacoes?institutionId=${user.institutionId}`;
+        url = `https://axolove-deploy-1004.onrender.com/solicitacoes/notificacoes?institutionId=${user.institutionId}`;
       } else {
-        url = `http://localhost:3000/solicitacoes/notificacoes?wallet=${walletAddress}`;
+        url = `https://axolove-deploy-1004.onrender.com/solicitacoes/notificacoes?wallet=${walletAddress}`;
       }
 
       const res = await fetch(url);
@@ -289,7 +289,7 @@ export default function Header() {
                             await Promise.all(
                               lista.map((n) =>
                                 fetch(
-                                  "http://localhost:3000/solicitacoes/visualizar",
+                                  "https://axolove-deploy-1004.onrender.com/solicitacoes/visualizar",
                                   {
                                     method: "POST",
                                     headers: {
@@ -368,7 +368,7 @@ export default function Header() {
                               onClick={async (e) => {
                                 e.stopPropagation();
                                 await fetch(
-                                  "http://localhost:3000/solicitacoes/visualizar",
+                                  "https://axolove-deploy-1004.onrender.com/solicitacoes/visualizar",
                                   {
                                     method: "POST",
                                     headers: {
