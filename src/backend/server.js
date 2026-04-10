@@ -58,7 +58,9 @@ app.use("/instituicoes", instituicoesRoutes);
 //Usando a rota de solicitações.
 app.use("/solicitacoes", solicitacaoRoutes);
 
+const PORT = process.env.PORT || 3000;
+
 //Mostrando que o servidor está rodando na porta 3000.
-app.listen(3000, () => {
-  console.log("Servidor rodando em http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
